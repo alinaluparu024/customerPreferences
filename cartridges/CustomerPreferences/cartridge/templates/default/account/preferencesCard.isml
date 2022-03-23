@@ -4,7 +4,7 @@
           ${Resource.msg('label.preferences','account',null)}
         </h2>
         <isif condition="${!pdict.account.isExternallyAuthenticated}">
-            <a href="${URLUtils.url('Preferences-EditPreferences')}" class="pull-right" aria-label="${Resource.msg('label.profile.edit','account',null)}">${Resource.msg('link.edit','account',null)}</a>
+            <a href="${URLUtils.url('Preferences-Edit')}" class="pull-right" aria-label="${Resource.msg('label.profile.edit','account',null)}">${Resource.msg('link.edit','account',null)}</a>
         </isif>
     </div>
     <!--body-->

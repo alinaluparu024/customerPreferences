@@ -10,7 +10,6 @@ var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
 var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 
-
 /**
  * Preferences-EditPreferences : The Account-EditProfile endpoint renders the page that allows a shopper to edit their profile. The edit profile form is prefilled with the shopper's first name, last name, phone number and email
  * @name Base/Preferences-EditPreferences
@@ -25,7 +24,7 @@ var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
  * @param {serverfunction} - get
  */
 server.get(
-    'EditPreferences',
+    'Edit',
     server.middleware.https,
     csrfProtection.generateToken,
     userLoggedIn.validateLoggedIn,
@@ -40,7 +39,7 @@ server.get(
         profileForm.clear();
         profileForm.customerPreferences.birthday.value = accountModel.profile.birthday;
         profileForm.customerPreferences.interests.value = accountModel.profile.custom.interests;
-      // eslint-disable-next-line max-len
+        // eslint-disable-next-line max-len
         profileForm.customerPreferences.newsletterSubscription.value = accountModel.profile.custom.newsletter;
         res.render('account/preferences', {
             profileForm: profileForm,
@@ -58,3 +57,5 @@ server.get(
         next();
     }
 );
+
+module.exports = server.exports();
