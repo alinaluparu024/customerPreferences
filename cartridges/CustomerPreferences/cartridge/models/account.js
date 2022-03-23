@@ -35,6 +35,7 @@ function getProfile(profile) {
  */
 function account(currentCustomer, addressModel, orderModel) {
     base.call(this, currentCustomer, addressModel, orderModel);
+    // fix checkout login - customer object not having 'raw' property defined
     if (!(currentCustomer instanceof dw.customer.Customer)) {
         this.profile = getProfile(currentCustomer.raw.profile);
     }
