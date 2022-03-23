@@ -1,0 +1,55 @@
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+  <type-extension type-id="Profile">
+    <custom-attribute-definitions>
+      <attribute-definition attribute-id="familyStatus">
+        <display-name xml:lang="x-default">Family Status</display-name>
+        <type>enum-of-string</type>
+        <mandatory-flag>false</mandatory-flag>
+        <externally-managed-flag>false</externally-managed-flag>
+      </attribute-definition>
+      <attribute-definition attribute-id="interests">
+        <display-name xml:lang="x-default">Interests</display-name>
+        <description xml:lang="x-default">What is the customer interested in</description>
+        <type>enum-of-string</type>
+        <mandatory-flag>false</mandatory-flag>
+        <externally-managed-flag>false</externally-managed-flag>
+        <select-multiple-flag>true</select-multiple-flag>
+        <value-definitions>
+          <value-definition>
+            <display xml:lang="x-default">Electronic</display>
+            <value>electronic</value>
+          </value-definition>
+          <value-definition>
+            <display xml:lang="x-default">Apparel</display>
+            <value>apparel</value>
+          </value-definition>
+        </value-definitions>
+      </attribute-definition>
+      <attribute-definition attribute-id="newsletter">
+        <display-name xml:lang="x-default">Newsletter</display-name>
+        <type>boolean</type>
+        <mandatory-flag>false</mandatory-flag>
+        <externally-managed-flag>false</externally-managed-flag>
+      </attribute-definition>
+    </custom-attribute-definitions>
+    <group-definitions>
+      <attribute-group group-id="Standard">
+        <display-name xml:lang="x-default">Profile Attributes</display-name>
+        <attribute attribute-id="salutation" system="true" />
+        <attribute attribute-id="title" system="true" />
+        <attribute attribute-id="companyName" system="true" />
+        <attribute attribute-id="jobTitle" system="true" />
+        <attribute attribute-id="firstName" system="true" />
+        <attribute attribute-id="lastName" system="true" />
+        <attribute attribute-id="suffix" system="true" />
+        <attribute attribute-id="gender" system="true" />
+        <attribute attribute-id="birthday" system="true" />
+        <attribute attribute-id="email" system="true" />
+        <attribute attribute-id="nextBirthday" system="true" />
+        <attribute attribute-id="secondName" system="true" />
+        <attribute attribute-id="newsletter" />
+        <attribute attribute-id="interests" />
+      </attribute-group>
+    </group-definitions>
+  </type-extension>
+</metadata>
