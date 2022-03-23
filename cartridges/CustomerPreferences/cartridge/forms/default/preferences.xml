@@ -14,7 +14,7 @@
 		<!-- Electronic -->
 		<field
 			formid="interests-electronic"
-			label="label.profile.interests"
+			label="label.profile.interests.electronic"
 			mandatory="false"
 			missing-error="error.message.required"
 			range-error="error.message.50orless"
@@ -22,7 +22,7 @@
 		<!-- Apparel -->
 		<field
 			formid="interests-apparel"
-			label="label.profile.interests"
+			label="label.profile.interests.apparel"
 			mandatory="false"
 			missing-error="error.message.required"
 			range-error="error.message.50orless"
