@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header clearfix">
+        <h2 class="pull-left">
+          ${Resource.msg('label.preferences','account',null)}
+        </h2>
+    </div>
+    <!--body-->
+    <div class="card-body card-info-group">
+      <dl>
+        <dt>${Resource.msg('label.profile.birthday','account',null)}</dt>
+        <dd>${pdict.account.profile.birthday}</dd>
+      </dl>
+       <dl>
+        <dt>${Resource.msg('label.profile.interests','account',null)}</dt>
+        <isloop items="${ pdict.account.profile.interests }" var="interest" status="loopstate">
+          <dd>${interests.value}</dd>
+        </isloop>
+      </dl>
+       <dl>
+        <dt>${Resource.msg('label.profile.newsletter','account',null)}</dt>
+        <dd>${pdict.account.profile.newsletter}</dd>
+      </dl>
+    </div>
+</div>
+
