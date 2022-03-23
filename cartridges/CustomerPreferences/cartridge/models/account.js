@@ -8,22 +8,22 @@ var base = module.superModule;
  * @returns {Object} an object that contains information about the current customer's profile
  */
 function getProfile(profile) {
-  var result;
-  if (profile) {
-    result = {
-      firstName: profile.firstName,
-      lastName: profile.lastName,
-      email: profile.email,
-      phone: Object.prototype.hasOwnProperty.call(profile, 'phone') ? profile.phone : profile.phoneHome,
-      password: '********',
-      birthday: profile.birthday,
-      interests: profile.custom.interests || [],
-      newsletter: profile.custom.newsletter
-    };
-  } else {
-    result = null;
-  }
-  return result;
+    var result;
+    if (profile) {
+        result = {
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            email: profile.email,
+            phone: Object.prototype.hasOwnProperty.call(profile, 'phone') ? profile.phone : profile.phoneHome,
+            password: '********',
+            birthday: profile.birthday,
+            interests: profile.custom.interests || [],
+            newsletter: profile.custom.newsletter
+        };
+    } else {
+        result = null;
+    }
+    return result;
 }
 
 /**
@@ -35,7 +35,9 @@ function getProfile(profile) {
  */
 function account(currentCustomer, addressModel, orderModel) {
     base.call(this, currentCustomer, addressModel, orderModel);
-    this.profile = getProfile(currentCustomer.raw.profile);
+    if (!(currentCustomer instanceof dw.customer.Customer)) {
+        this.profile = getProfile(currentCustomer.raw.profile);
+    }
 }
 
 module.exports = account;
