@@ -6,19 +6,38 @@
     </div>
     <!--body-->
     <div class="card-body card-info-group">
+    <!--Birthday-->
       <dl>
         <dt>${Resource.msg('label.profile.birthday','account',null)}</dt>
-        <dd>${pdict.account.profile.birthday}</dd>
+        <isif condition="${pdict.account.profile.birthday !== null}">
+          <dd>${pdict.account.profile.birthday}</dd>
+          <iselse/>
+            <dd>${Resource.msg('label.empty','account',null)}</dd>
+        </isif>
       </dl>
+      <!--Interests-->
        <dl>
         <dt>${Resource.msg('label.profile.interests','account',null)}</dt>
-        <isloop items="${ pdict.account.profile.interests }" var="interest" status="loopstate">
-          <dd>${interest.displayValue}</dd>
-        </isloop>
+        <isif condition="${pdict.account.profile.interests !== []}">
+          <isloop items="${ pdict.account.profile.interests }" var="interest" status="loopstate">
+            <dd>${interest.displayValue}</dd>
+          </isloop>
+          <iselse/>
+             <dd>${Resource.msg('label.empty','account',null)}</dd>
+        </isif>
       </dl>
+      <!--Newsletter-->
        <dl>
         <dt>${Resource.msg('label.profile.newsletter','account',null)}</dt>
-        <dd>${pdict.account.profile.newsletter}</dd>
+        <isif condition="${pdict.account.profile.newsletter !== null}">
+          <isif condition="${pdict.account.profile.newsletter === true}">
+            <dt>${Resource.msg('label.profile.newsletter.true','account',null)}</dt>
+            <iselse/>
+              <dt>${Resource.msg('label.profile.newsletter.false','account',null)}</dt>
+          </isif>
+          <iselse/>
+            <dd>${Resource.msg('label.empty','account',null)}</dd>
+        </isif>
       </dl>
     </div>
 </div>
