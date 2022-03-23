@@ -13,7 +13,7 @@
        <dl>
         <dt>${Resource.msg('label.profile.interests','account',null)}</dt>
         <isloop items="${ pdict.account.profile.interests }" var="interest" status="loopstate">
-          <dd>${interests.value}</dd>
+          <dd>${interest.displayValue}</dd>
         </isloop>
       </dl>
        <dl>

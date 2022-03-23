@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
 <form xmlns="http://www.demandware.com/xml/form/2008-04-19" secure="false">
-	<group formid="preferences">
+	<group formid="customerPreferences">
 		<field 
 			formid="birthday" 
 			label="label.profile.birthday" 
 			mandatory="false" 
+			max-length="50"
 			missing-error="error.message.required" 
 			range-error="error.message.50orless" 
 			type="date" />
 
 		<field 
-			formid="lastname" 
-			label="label.input.lastname.profile" 
+			formid="interests" 
+			label="label.profile.interests" 
 			mandatory="true" 
 			max-length="50" 
 			missing-error="error.message.required"
@@ -19,8 +20,8 @@
 			type="string" />
 
 		<field
-			formid="email" 
-			label="label.input.email.profile" 
+			formid="newsletterSubscription" 
+			label="label.profile.newsletter" 
 			mandatory="true" 
 			max-length="50" 
 			missing-error="error.message.required"
@@ -31,31 +32,6 @@
 			type="string"/> 
 			<!-- TODO value-error not comming back from the platform -->
 
-		<field 
-			formid="emailconfirm"
-			label="label.input.emailconfirm.profile"
-			mandatory="true"
-			max-length="50"
-			missing-error="error.message.required"
-			parse-error="error.message.parse.email.profile.form"
-			range-error="error.message.50orless"
-			regexp="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$"
-			value-error="ValueErrorText"
-			type="string"/> 
-			<!-- TODO value-error not comming back from the platform -->
-			
-		<field 
-			formid="phone"
-			label="label.input.phone.profile"
-			mandatory="true"
-			regexp="^\(?([2-9][0-8][0-9])\)?[\-\. ]?([2-9][0-9]{2})[\-\. ]?([0-9]{4})(\s*x[0-9]+)?$"
-			missing-error="error.message.required"
-			parse-error="error.message.parse.phone.profile.form"
-			type="string"/> 
-
-		<field 
-			formid="addtoemaillist" 
-			label="description.checkbox.emailsignup.profile"  
-			type="boolean"/>
 	</group>
+
 </form>
