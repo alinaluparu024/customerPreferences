@@ -1,37 +1,42 @@
 <?xml version="1.0"?>
 <form xmlns="http://www.demandware.com/xml/form/2008-04-19" secure="false">
 	<group formid="customerPreferences">
-		<field 
-			formid="birthday" 
-			label="label.profile.birthday" 
-			mandatory="false" 
-			max-length="50"
-			missing-error="error.message.required" 
-			range-error="error.message.50orless" 
+		<!-- Birhday -->
+		<field
+			formid="birthday"
+			label="label.profile.birthday"
+			mandatory="false"
+			missing-error="error.message.required"
+			range-error="error.message.50orless"
 			type="date" />
 
-		<field 
-			formid="interests" 
-			label="label.profile.interests" 
-			mandatory="true" 
-			max-length="50" 
-			missing-error="error.message.required"
-			range-error="error.message.50orless" 
-			type="string" />
-
+		<!-- Interests -->
+		<!-- Electronic -->
 		<field
-			formid="newsletterSubscription" 
-			label="label.profile.newsletter" 
-			mandatory="true" 
-			max-length="50" 
+			formid="interests-electronic"
+			label="label.profile.interests"
+			mandatory="false"
+			missing-error="error.message.required"
+			range-error="error.message.50orless"
+			type="boolean" />
+		<!-- Apparel -->
+		<field
+			formid="interests-apparel"
+			label="label.profile.interests"
+			mandatory="false"
+			missing-error="error.message.required"
+			range-error="error.message.50orless"
+			type="boolean" />
+
+		<!-- Newsletter -->
+		<field
+			formid="newsletterSubscription"
+			label="label.profile.newsletter"
+			mandatory="false"
 			missing-error="error.message.required"
 			parse-error="error.message.parse.email.profile.form"
 			range-error="error.message.50orless"
-			regexp="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$" 
-			value-error="ValueErrorText"
-			type="string"/> 
-			<!-- TODO value-error not comming back from the platform -->
-
+			type="boolean"/>
 	</group>
 
 </form>
