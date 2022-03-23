@@ -13,7 +13,7 @@
 		<!-- Interests -->
 		<!-- Electronic -->
 		<field
-			formid="interests-electronic"
+			formid="interestsElectronic"
 			label="label.profile.interests.electronic"
 			mandatory="false"
 			missing-error="error.message.required"
@@ -21,7 +21,7 @@
 			type="boolean" />
 		<!-- Apparel -->
 		<field
-			formid="interests-apparel"
+			formid="interestsApparel"
 			label="label.profile.interests.apparel"
 			mandatory="false"
 			missing-error="error.message.required"

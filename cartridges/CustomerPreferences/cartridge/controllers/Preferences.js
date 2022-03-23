@@ -38,9 +38,9 @@ server.get(
         var profileForm = server.forms.getForm('preferences');
         profileForm.clear();
         profileForm.customerPreferences.birthday.value = accountModel.profile.birthday;
-        profileForm.customerPreferences.interests.value = accountModel.profile.custom.interests;
+        // profileForm.customerPreferences.interests.value = accountModel.profile.interests[0] || '';
         // eslint-disable-next-line max-len
-        profileForm.customerPreferences.newsletterSubscription.value = accountModel.profile.custom.newsletter;
+        profileForm.customerPreferences.newsletterSubscription.value = accountModel.profile.newsletter;
         res.render('account/preferences', {
             profileForm: profileForm,
             breadcrumbs: [
