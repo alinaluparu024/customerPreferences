@@ -38,9 +38,26 @@ server.get(
         var profileForm = server.forms.getForm('preferences');
         profileForm.clear();
         profileForm.customerPreferences.birthday.value = accountModel.profile.birthday;
+        var interests=[];
+        accountModel.profile.interests.forEach(element => {
+            if ( element == 'electronic' ){
+                profileForm.customerPreferences.interestsElectronic.checked = true;
+                interests.push(element);
+            }
+            if ( element == 'apparel'){
+                profileForm.customerPreferences.interestsApparel.checked = true;
+                interests.push(element);
+            }
+            })
+    
         // profileForm.customerPreferences.interests.value = accountModel.profile.interests[0] || '';
         // eslint-disable-next-line max-len
-        profileForm.customerPreferences.newsletterSubscription.value = accountModel.profile.newsletter;
+         if (accountModel.profile.newsletter == false){
+            profileForm.customerPreferences.newsletterSubscription.checked = false;
+         } else{
+            profileForm.customerPreferences.newsletterSubscription.checked = true;
+         }
+       // profileForm.customerPreferences.newsletterSubscription.value = accountModel.profile.newsletter;
         res.render('account/preferences', {
             profileForm: profileForm,
             breadcrumbs: [
