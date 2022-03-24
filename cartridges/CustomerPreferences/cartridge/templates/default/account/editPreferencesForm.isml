@@ -1,4 +1,4 @@
-<form action="${URLUtils.url('Preferences-Save')}" class="edit-profile-form" method="POST" <isprint value="${pdict.profileForm.attributes}" encoding="off" />>
+<form action="${URLUtils.url('Preferences-Save')}" class="edit-preferences-form" method="POST" <isprint value="${pdict.profileForm.attributes}" encoding="off" />>
 
   <iscomment> Birthday </iscomment>
   <div class="form-group">
