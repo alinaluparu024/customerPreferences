@@ -1,7 +1,7 @@
 'use strict';
 
 var base = require('base/profile/profile');
-var formValidation = require('../components/formValidation');
+var formValidation = require('base/components/formValidation');
 
 function submitPreferences() {
   $('form.edit-preferences-form').submit(function (e) {
