@@ -6,8 +6,7 @@
 			formid="birthday"
 			label="label.profile.birthday"
 			mandatory="false"
-			missing-error="error.message.required"
-			range-error="error.message.50orless"
+			format="yyyy-MM-dd"
 			type="date" />
 
 		<!-- Interests -->
@@ -16,16 +15,12 @@
 			formid="interestsElectronic"
 			label="label.profile.interests.electronic"
 			mandatory="false"
-			missing-error="error.message.required"
-			range-error="error.message.50orless"
 			type="boolean" />
 		<!-- Apparel -->
 		<field
 			formid="interestsApparel"
 			label="label.profile.interests.apparel"
 			mandatory="false"
-			missing-error="error.message.required"
-			range-error="error.message.50orless"
 			type="boolean" />
 
 		<!-- Newsletter -->
@@ -33,9 +28,6 @@
 			formid="newsletterSubscription"
 			label="label.profile.newsletter"
 			mandatory="false"
-			missing-error="error.message.required"
-			parse-error="error.message.parse.email.profile.form"
-			range-error="error.message.50orless"
 			type="boolean"/>
 	</group>
 

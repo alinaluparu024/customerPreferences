@@ -58,4 +58,87 @@ server.get(
     }
 );
 
+/**
+ * Preferences-SavePreferences : The Preferences-SavePreferences endpoint is the endpoint that gets hit when a shopper has edited their preferences
+ * @name Base/Preferences-SavePreferences
+ * @function
+ * @memberof Preferences
+ * @param {middleware} - server.middleware.https
+ * @param {middleware} - csrfProtection.validateAjaxRequest
+ * @param {middleware} - userLoggedIn.validateLoggedIn
+ * @param {httpparameter} - dwfrm_profile_customer_firstname - Input field for the shoppers's first name
+ * @param {httpparameter} - dwfrm_profile_customer_lastname - Input field for the shopper's last name
+ * @param {httpparameter} - dwfrm_profile_customer_phone - Input field for the shopper's phone number
+ * @param {httpparameter} - dwfrm_profile_customer_email - Input field for the shopper's email address
+ * @param {httpparameter} - dwfrm_profile_customer_emailconfirm - Input field for the shopper's email address
+ * @param {httpparameter} - dwfrm_profile_login_password  - Input field for the shopper's password
+ * @param {httpparameter} - csrf_token - hidden input field CSRF token
+ * @param {category} - sensititve
+ * @param {returns} - json
+ * @param {serverfunction} - post
+ */
+server.post(
+    'Save',
+    server.middleware.https,
+    csrfProtection.validateAjaxRequest,
+    userLoggedIn.validateLoggedIn,
+    function (req, res, next) {
+        var Transaction = require('dw/system/Transaction');
+        var CustomerMgr = require('dw/customer/CustomerMgr');
+        var Resource = require('dw/web/Resource');
+        var URLUtils = require('dw/web/URLUtils');
+
+        var formErrors = require('*/cartridge/scripts/formErrors');
+        var preferencesForm = server.forms.getForm('preferences');
+        var birthday = null;
+        if (preferencesForm.customerPreferences.birthday.htmlValue) {
+            birthday = new Date(preferencesForm.customerPreferences.birthday.htmlValue);
+        }
+
+        var interests = [];
+        if (preferencesForm.customerPreferences.interestsElectronic.checked) {
+            interests.push(Resource.msg('label.profile.interests.electronic.id', 'account', ''));
+        }
+        if (preferencesForm.customerPreferences.interestsApparel.checked) {
+            interests.push(Resource.msg('label.profile.interests.apparel.id', 'account', ''));
+        }
+  
+        // form validation
+        var result = {
+            birthday: birthday,
+            interests: interests,
+            newsletter: preferencesForm.customerPreferences.newsletterSubscription.checked,
+            preferencesForm: preferencesForm
+        };
+
+        if (preferencesForm.valid) {
+            res.setViewData(result);
+            this.on('route:BeforeComplete', function (req, res) { // eslint-disable-line no-shadow
+                var formInfo = res.getViewData();
+                var customer = CustomerMgr.getCustomerByCustomerNumber(
+                    req.currentCustomer.profile.customerNo
+                );
+                var profile = customer.getProfile();
+  
+                Transaction.wrap(function () {
+                    profile.setBirthday(formInfo.birthday);
+                    profile.custom.newsletter = formInfo.newsletter;
+                    profile.custom.interests = formInfo.interests;
+                });
+  
+                res.json({
+                    success: true,
+                    redirectUrl: URLUtils.url('Account-Show').toString()
+                });
+            });
+        } else {
+            res.json({
+                success: false,
+                fields: formErrors.getFormErrors(preferencesForm)
+            });
+        }
+        return next();
+    }
+  );
+
 module.exports = server.exports();

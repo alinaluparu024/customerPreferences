@@ -17,7 +17,7 @@ function getProfile(profile) {
             phone: Object.prototype.hasOwnProperty.call(profile, 'phone') ? profile.phone : profile.phoneHome,
             password: '********',
             birthday: profile.birthday,
-            interests: profile.custom.interests || [],
+            interests: profile.custom.interests ? profile.custom.interests : [],
             newsletter: profile.custom.newsletter
         };
     } else {

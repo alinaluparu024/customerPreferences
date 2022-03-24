@@ -1,12 +1,12 @@
-<form action="${URLUtils.url('Preferences-Save')}" class="edit-profile-form" method="POST" <isprint value="${pdict.profileForm.attributes}" encoding="off" />>
+<form action="${URLUtils.url('Preferences-Save')}" class="edit-preferences-form" method="POST" <isprint value="${pdict.profileForm.attributes}" encoding="off" />>
 
   <iscomment> Birthday </iscomment>
   <div class="form-group">
     <label class="form-control-label" for="birthday">
       <isprint value="${Resource.msg('label.profile.birthday','account',null)}" encoding="htmlcontent" />
     </label>
-    <input type="date" class="form-control" id="firstName"
-      <isprint value="${pdict.profileForm.customerPreferences.birthday.attributes}" encoding="off" />>
+    <input type="date" class="form-control" id="birthday"
+      <isprint value="${pdict.profileForm.customerPreferences.birthday.attributes}" encoding="off" />/>
     <div class="invalid-feedback"></div>
   </div>
 
@@ -14,16 +14,26 @@
   <div class="form-group">
     <label class="form-control-label" for="choices[]">
       <isprint value="${Resource.msg('label.profile.interests','account',null)}" encoding="htmlcontent" />
-    </label> <br>
+    </label>
+    </br>
 
-    <input name="choices[]" value="electronic" type="checkbox"  /> ${Resource.msg('label.profile.interests.electronic','account',null)} <br>
-    <input name="choices[]" value="apparel" type="checkbox" /> ${Resource.msg('label.profile.interests.apparel','account',null)} <br>
-  </div>
+    <input type="checkbox" id="interestsElectronic"
+      <isprint value="${pdict.profileForm.customerPreferences.interestsElectronic.attributes}" encoding="off" />/>
+    <label class="form-control-label" for="interestsElectronic">
+      <isprint value="${Resource.msg('label.profile.interests.electronic','account',null)}" encoding="htmlcontent" />
+    </label>
+    </br>
+    <input type="checkbox" id="interestsApparel"
+      <isprint value="${pdict.profileForm.customerPreferences.interestsApparel.attributes}" encoding="off" />/>
+    <label class="form-control-label" for="interestsApparel">
+      <isprint value="${Resource.msg('label.profile.interests.apparel','account',null)}" encoding="htmlcontent" />
+    </label>
+    </div>
 
   <iscomment> Newsletter </iscomment>
   <div class="form-group">
     <input type="checkbox" id="newsletterSubscription"
-      <isprint value="${pdict.profileForm.customerPreferences.newsletterSubscription.attributes}" encoding="off" />>
+      <isprint value="${pdict.profileForm.customerPreferences.newsletterSubscription.attributes}" encoding="off" />/>
     <label class="form-control-label" for="newsletterSubscription">
       <isprint value="${Resource.msg('label.profile.newsletter','account',null)}" encoding="htmlcontent" />
     </label>
